@@ -6,17 +6,19 @@ var state="nod";
 var ms;
 var ssr;
 var c1,c2,c3;
+//locations
+var by=[86,108,130,20,42,64],sy=[86,108,130,0],msp=[152];
 function setup() {
   createCanvas(windowWidth-200,windowHeight);
 //slider
   rslide= createSlider(0,255,0);
   gslide= createSlider(0,255,0);
   bslide= createSlider(0,255,0);
-  rslide.position(width,86);
-  bslide.position(width,108);
-  gslide.position(width,130);
   sslide= createSlider(0,200,0);
-  sslide.position(width,0);
+  rslide.position(width,sy[0]);
+  bslide.position(width,sy[1]);
+  gslide.position(width,sy[2]);
+  sslide.position(width,sy[3]);
   rslide.hide();
   gslide.hide();
   bslide.hide();
@@ -27,12 +29,12 @@ function setup() {
   hbutton=createButton("choosecolor");
   cbutton= createButton("clear");
   dbutton= createButton("download your pic");
-  ebutton.position(width,86);
-  gbutton.position(width,108);
-  hbutton.position(width,130);
-  fbutton.position(width,20);
-  cbutton.position(width,42);
-  dbutton.position(width,64);
+  ebutton.position(width,by[0]);
+  gbutton.position(width,by[1]);
+  hbutton.position(width,by[2]);
+  fbutton.position(width,by[3]);
+  cbutton.position(width,by[4]);
+  dbutton.position(width,by[5]);
   // ebutton.hide();
   // gbutton.hide();
   // hbutton.hide();
@@ -42,12 +44,13 @@ function setup() {
   ms.option("square");
   ms.option("triangle");
   background("black");
-  ms.position(width,152);
+  ms.position(width,msp[0]);
  //createP("(size rgb ) and r g b won't be captured in pic it will appear the fill selected & my brand name(not selling anything) , for comments message me at parameshgaming30@gmail.com")
 }
 
 function draw() {
   textSize(20);
+  frameRate(60)
   noStroke();
   fill("white");
   rectMode(CENTER);
@@ -60,10 +63,10 @@ function draw() {
       rect(mouseX,mouseY,sslide.value(),sslide.value());
     }
     else if(ms.value()=="triangle"){
-      triangle(mouseX-100, mouseY, mouseX+100, mouseY, mouseX, mouseY-150)
+      triangle(mouseX-sslide.value(), mouseY+sslide.value(), mouseX+sslide.value(), mouseY+sslide.value(), mouseX, mouseY-sslide.value())
     }
     rect(50,50,100,100);
-  } 
+  }
   if(mouseIsPressed){
     state="d";
   }
@@ -110,7 +113,7 @@ function download(){
   rect(20,height-20,70,20);
     fill("white");
     textSize(10);
-     text("parameshCodes",5,10);
+     text("EarthCodes",5,10);
   save();
   }
 }
